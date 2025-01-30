@@ -9,3 +9,6 @@ const initialState={
         {id:4, text:'Camera', amount:250},
     ]
 }
+
+//create context
+export const GlobaoContext=createContext(initialState);
