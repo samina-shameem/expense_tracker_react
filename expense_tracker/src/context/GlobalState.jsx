@@ -1,4 +1,4 @@
-import React,{createContext,useReducer} from "react";
+import React,{Children, createContext,useReducer} from "react";
 
 //Initial state
 const initialState={
@@ -11,4 +11,14 @@ const initialState={
 }
 
 //create context
-export const GlobaoContext=createContext(initialState);
+export const GlobalContext=createContext(initialState);
+
+//provider component
+export const GlobalProvider=({Children}) => {
+    const [state,dispatch]=useReducer(AppReducer, initialState);
+ 
+    return(<GlobalContext.Provider>
+        {Children}
+    </GlobalContext.Provider>)
+
+}
