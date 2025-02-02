@@ -1,24 +1,21 @@
-const AppReducer =(state, action) => {
-  switch (action.type){
+const AppReducer = (state, action) => {
+  switch (action.type) {
     case "ADD_TRANSACTION":
-      return{
+      return {
         ...state,
-        transactions:[action.payload, ...state.transactions],
-
+        transactions: [action.payload, ...(state.transactions || [])],  // Fixed potential issue
       };
 
-      case "DELETE_TRANSACTION":
-        return{
-          ...state,
-          transactions:state.transactions.filter(
-            (transaction) => transaction.id !== action.payload
+    case "DELETE_TRANSACTION":
+      return {
+        ...state,
+        transactions: state.transactions.filter(
+          (transaction) => transaction.id !== action.payload
+        ),
+      };
 
-          ),
-        };
-        default:
-          return state;
-      
-
+    default:
+      return state;
   }
 };
 

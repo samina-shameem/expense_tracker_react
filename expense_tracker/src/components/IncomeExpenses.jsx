@@ -5,13 +5,13 @@ const IncomeExpenses = () => {
   const { transactions } = useContext(GlobalContext);
 
   const income = transactions
-    .filter((item) => item.amount > 0)
-    .reduce((acc, item) => acc + item.amount, 0)
+    .filter((transaction) => transaction.amount > 0)
+    .reduce((acc, transaction) => acc + transaction.amount, 0)
     .toFixed(2);
 
   const expense = transactions
-    .filter((item) => item.amount < 0)
-    .reduce((acc, item) => acc + item.amount, 0)
+    .filter((transaction) => transaction.amount < 0)
+    .reduce((acc, transaction) => acc + transaction.amount, 0)
     .toFixed(2);
 
   return (
